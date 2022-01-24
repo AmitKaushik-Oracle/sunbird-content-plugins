@@ -97,9 +97,8 @@ declare -a coreplugins=("org.ekstep.activitybrowser-1.3"
 
 for i in "${coreplugins[@]}"
 do
-   #az storage blob delete-batch -s $1 --pattern content-plugins/$i
-   #az storage blob upload-batch --destination $1/content-plugins/$i --source $2/$i
-   oci os object bulk-delete -ns $3 -bn $1 --prefix content-plugins/$i --force
-   oci os object bulk-upload -bn $1 --prefix content-plugins/ --src-dir $2/$i
+
+   oci os object bulk-delete -ns $3 -bn $1 --prefix content-plugins/$i/ --force
+   oci os object bulk-upload -bn $1 --prefix content-plugins/$i/ --src-dir $2/$i
 
 done
